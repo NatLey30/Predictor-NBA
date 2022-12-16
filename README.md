@@ -6,7 +6,7 @@ Para ello debes se dispone de dos ETLs. La primera ETL extrae, transforma los da
 
 Web API: https://api-sports.io/documentation/nba/v2
 
-Web pronóstico:
+Web pronóstico: https://www.sportytrader.es/cuotas/baloncesto/usa/nba-306/
 
 Ficheros entrada:
 
