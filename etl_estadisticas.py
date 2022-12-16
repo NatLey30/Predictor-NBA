@@ -34,22 +34,7 @@ def extract(auth_key, endpoint):
 
 
 def transform(auth_key):
-    # Sacamos las temporadas
-    temporadas = extract(auth_key, '/seasons')
-    print('TEMPORADAS')
-    for año in temporadas:
-        print(f' - {año}')
-
-    # Pedimos al usuario la temporada que quiere ver
-    op = input('¿Qué temporada te interesa?\n')
-    continuar = True
-    # Si esa temporada no existe, la pedimos otra vez
-    while continuar:
-        if str(op) in str(temporadas):
-            continuar = False
-        else:
-            print('No has introducido una fecha valida')
-            op = input('¿Qué temporada te interesa?\n')
+    op = 2022
 
     # Pedimo el equipo del que queremos obtener datos
     nombre_equipo = input('¿De qué equipo te gustaría obtener estadísticas?\n')
@@ -71,7 +56,7 @@ def transform(auth_key):
     datos_eq = [op, cd_eq, nm_eq, lg_eq]
 
     # Sacamos los jugadores de este equipo
-    jugadores = extract(auth_key, f'/players/?team={id_eq}&season={op}')
+    jugadores = extract(auth_key, f'/players/?team={id_eq}&season=2022')
     datos_jg = []
     for jg in jugadores:
         fn_jg = jg['firstname']
@@ -82,7 +67,7 @@ def transform(auth_key):
         datos_jg.append([fn_jg, ln_jg, ct_jg, st_jg, pro_jg])
 
     # Sacamos las estadísticas de este equipo
-    jugadores_estadisticas = extract(auth_key, f'/players/statistics?team={id_eq}&season={op}')
+    jugadores_estadisticas = extract(auth_key, f'/players/statistics?team={id_eq}&season=2022')
     datos_jg_eq = []
     for jg_e in jugadores_estadisticas:
         gm_jg_e = jg_e['game']['id']
