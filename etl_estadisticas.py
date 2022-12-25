@@ -1,5 +1,3 @@
-import http.client
-import json
 import requests
 from xhtml2pdf import pisa
 import webbrowser
@@ -34,9 +32,7 @@ def extract(auth_key, endpoint):
 
 
 def transform(auth_key):
-    op = 2022
-
-    # Pedimo el equipo del que queremos obtener datos
+    # Pedimos el equipo del que queremos obtener datos
     nombre_equipo = input('¿De qué equipo te gustaría obtener estadísticas?\n')
     continuar = True
     # Si ese equipo no existe, pedimos otro nombre
@@ -53,7 +49,7 @@ def transform(auth_key):
     nm_eq = equipo[0]['nickname']
     cd_eq = equipo[0]['code']
     lg_eq = equipo[0]['logo']
-    datos_eq = [op, cd_eq, nm_eq, lg_eq]
+    datos_eq = ['2022', cd_eq, nm_eq, lg_eq]
 
     # Sacamos los jugadores de este equipo
     jugadores = extract(auth_key, f'/players/?team={id_eq}&season=2022')
@@ -81,7 +77,9 @@ def transform(auth_key):
         fta_jg_e = jg_e['fta']
         sl_jg_e = jg_e['steals']
         bk_jg_e = jg_e['blocks']
-        datos_jg_eq.append([gm_jg_e, fn_jg_e + ' ' + ln_jg_e, min_jg_e, pt_jg_e, fgm_jg_e, fga_jg_e, ftm_jg_e, fta_jg_e, sl_jg_e, bk_jg_e])
+        datos_jg_eq.append([gm_jg_e, fn_jg_e + ' ' + ln_jg_e, min_jg_e,
+                            pt_jg_e, fgm_jg_e, fga_jg_e, ftm_jg_e, fta_jg_e,
+                            sl_jg_e, bk_jg_e])
 
     return datos_eq, datos_jg, datos_jg_eq
 
@@ -176,7 +174,8 @@ def load(datos_eq, datos_jg, datos_jg_eq):
 
 
 if "__main__" == __name__:
-    auth_key = '64069816d3dbbf12b8eb41c235918773'
+
+    auth_key = 'xxxxxxx'  # insert your api key from config.txt
 
     datos_eq, datos_jg, datos_jg_eq = transform(auth_key)
     load(datos_eq, datos_jg, datos_jg_eq)
