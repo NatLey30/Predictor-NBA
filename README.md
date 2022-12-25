@@ -8,7 +8,20 @@ Web API: https://api-sports.io/documentation/nba/v2
 
 Web pronóstico: https://www.sportytrader.es/cuotas/baloncesto/usa/nba-306/
 
-Ficheros entrada:
+Los ficheros de entrada son:
+- requirements.txt
+- config.txt
 
-Ficheros salida:
+Los ficheros de salida son:
+- reporte.html
+- Estadísticas.pdf
 
+Los archivos de transformación:
+- etl_estadisticas.py
+- etl_predictor.py
+
+Librerías:
+- requests
+- xhtml2pdf
+- webbrowser
+- bs4
