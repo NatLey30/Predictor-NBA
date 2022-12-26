@@ -175,7 +175,10 @@ def load(datos_eq, datos_jg, datos_jg_eq):
 
 if "__main__" == __name__:
 
-    auth_key = 'xxxxxxx'  # insert your api key from config.txt
+    # leemos authentification key
+    archivo = open('config.txt', 'r')
+    linea = archivo.readline()
+    auth_key = linea.split(':')[1].strip()
 
     datos_eq, datos_jg, datos_jg_eq = transform(auth_key)
     load(datos_eq, datos_jg, datos_jg_eq)
